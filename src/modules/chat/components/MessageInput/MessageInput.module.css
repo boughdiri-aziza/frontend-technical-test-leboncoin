@@ -1,0 +1,130 @@
+.container {
+  flex-shrink: 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+.composer {
+  width: 100%;
+  max-width: var(--reading-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  max-height: 160px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-raised);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-ring);
+}
+
+.input:disabled {
+  background-color: var(--surface-hover);
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.input.error {
+  border-color: var(--danger);
+}
+
+.sendButton {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 1.4rem;
+  background-color: var(--brand);
+  color: var(--text-on-brand);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.sendButton:hover:not(:disabled) {
+  background-color: var(--brand-hover);
+}
+
+.sendButton:disabled {
+  background-color: var(--border-strong);
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.hints {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.charCount {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  transition: color 0.15s;
+}
+
+.charCount.warning {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.errorMessage {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--danger-soft);
+  color: var(--danger-text);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  animation: slideDown 0.18s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .sendButton {
+    padding: 0 1rem;
+  }
+}

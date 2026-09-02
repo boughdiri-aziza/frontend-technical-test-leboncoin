@@ -1,0 +1,117 @@
+.message {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  animation: fadeIn 0.18s ease-out;
+}
+
+.deleting {
+  opacity: 0.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.own {
+  justify-content: flex-end;
+}
+
+.other {
+  justify-content: flex-start;
+}
+
+.content {
+  max-width: 72%;
+  min-width: 0;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow-wrap: anywhere;
+}
+
+.own .content {
+  background-color: var(--brand);
+  color: var(--text-on-brand);
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.other .content {
+  background-color: var(--bubble-other);
+  color: var(--bubble-other-text);
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+.body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.time {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+
+.own .time {
+  text-align: right;
+}
+
+.other .time {
+  text-align: left;
+}
+
+.delete {
+  order: -1;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.message:hover .delete,
+.delete:focus-visible {
+  opacity: 1;
+}
+
+.delete:hover:not(:disabled) {
+  color: var(--danger);
+}
+
+.delete:disabled {
+  cursor: not-allowed;
+}
+
+@media (hover: none) {
+  .delete {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 85%;
+  }
+}
